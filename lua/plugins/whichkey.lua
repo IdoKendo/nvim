@@ -10,6 +10,9 @@ return {
                 c = {
                     name = "[C]omment",
                 },
+                e = {
+                    name = "Troubl[E]",
+                },
                 f = {
                     name = "[F]ind",
                 },
