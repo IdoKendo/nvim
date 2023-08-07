@@ -19,6 +19,9 @@ return {
                 g = {
                     name = "[G]it",
                 },
+                o = {
+                    name = "[O]bsidian",
+                },
                 r = {
                     name = "[R]un",
                 },
