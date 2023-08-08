@@ -31,6 +31,7 @@
   "trouble.nvim": { "branch": "main", "commit": "0e6703c1d37d2d34ed029ab54f9bd66e3f2ecbf7" },
   "undotree": { "branch": "master", "commit": "0e11ba7325efbbb3f3bebe06213afa3e7ec75131" },
   "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" },
+  "vim-helm": { "branch": "master", "commit": "c2e7b85711d410e1d73e64eb5df7b70b1c4c10eb" },
   "vim-tmux-navigator": { "branch": "master", "commit": "cdd66d6a37d991bba7997d593586fc51a5b37aa8" },
   "which-key.nvim": { "branch": "main", "commit": "d871f2b664afd5aed3dc1d1573bef2fb24ce0484" }
 }

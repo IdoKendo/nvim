@@ -2,6 +2,7 @@ local ensure_installed = {
     "gopls",
     "pyright",
     "rust_analyzer",
+    "helm_ls",
 }
 
 function keymaps(client, bufnr)
@@ -16,6 +17,7 @@ function keymaps(client, bufnr)
 end
 
 return {
+    { "towolf/vim-helm" },
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v2.x",
@@ -39,6 +41,7 @@ return {
             local lsp = require('lsp-zero').preset({})
             local lspconfig = require("lspconfig")
             local util = require("lspconfig/util")
+            local configs = require("lspconfig.configs")
 
             lsp.ensure_installed(ensure_installed)
 
@@ -95,6 +98,23 @@ return {
                         },
                     },
                 }
+            }
+
+            if not configs.helm_ls then
+                configs.helm_ls = {
+                    default_config = {
+                        cmd = {"helm_ls", "serve"},
+                        filetype = {"helm"},
+                        root_dir = function(fname)
+                            return util.root_patern("Chart.yaml")(fname)
+                        end,
+                    },
+                }
+            end
+
+            lspconfig.helm_ls.setup {
+                cmd = {"helm_ls", "serve"},
+                filetypes = { "helm" },
             }
         end,
     },
