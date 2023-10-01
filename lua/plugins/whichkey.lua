@@ -10,6 +10,9 @@ return {
                 c = {
                     name = "[C]omment",
                 },
+                d = {
+                    name = "[D]iagnostics",
+                },
                 e = {
                     name = "Troubl[E]",
                 },
@@ -33,5 +36,5 @@ return {
                 },
             },
         })
-    end
+    end,
 }
