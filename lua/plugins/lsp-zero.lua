@@ -74,7 +74,6 @@ return {
                 ensure_installed = {
                     "black",
                     "reorder-python-imports",
-                    "ruff",
                     "stylua",
                 },
                 automatic_installation = true,
