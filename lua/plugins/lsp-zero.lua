@@ -73,6 +73,7 @@ return {
             require("mason-tool-installer").setup({
                 ensure_installed = {
                     "black",
+                    "prettier",
                     "reorder-python-imports",
                     "stylua",
                 },

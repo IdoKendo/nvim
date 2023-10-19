@@ -8,8 +8,9 @@ return {
         local conform = require("conform")
         conform.setup({
             formatters_by_ft = {
-                python = { "black", "reorder-python-imports" },
+                javascript = { "prettier" },
                 lua = { "stylua" },
+                python = { "black", "reorder-python-imports" },
             },
             format_on_save = {
                 lsp_fallback = true,
