@@ -11,7 +11,12 @@ return {
                     additional_vim_regex_highlighting = { "markdown" },
                 },
             })
-        end
+            vim.filetype.add({
+                extension = {
+                    templ = "templ",
+                },
+            })
+        end,
     },
     {
         "nvim-treesitter/playground",
