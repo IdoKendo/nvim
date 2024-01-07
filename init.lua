@@ -31,6 +31,8 @@ vim.opt.list = true
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.opt.conceallevel = 1
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 

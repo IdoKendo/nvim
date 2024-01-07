@@ -1,7 +1,7 @@
 return {
     "epwalsh/obsidian.nvim",
     lazy = true,
-    event = { "BufReadPre " .. vim.fn.expand "~" .. "/idokendo/**.md" },
+    event = { "BufReadPre " .. vim.fn.expand("~") .. "/idokendo/**.md" },
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
