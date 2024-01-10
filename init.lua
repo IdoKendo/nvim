@@ -43,7 +43,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]aste and keep clipboard"
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.config/tmux/plugins/tmux-sessionx/scripts/sessionx.sh<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/scripts/session.sh<CR>")
 
 -- Plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
