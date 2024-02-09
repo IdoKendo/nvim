@@ -1,10 +1,3 @@
-local ensure_installed = {
-    "gopls",
-    "pyright",
-    "rust_analyzer",
-    "helm_ls",
-}
-
 function keymaps(client, bufnr)
     vim.keymap.set("n", "gd", function()
         vim.lsp.buf.definition()
