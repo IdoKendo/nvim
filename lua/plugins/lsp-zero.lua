@@ -58,6 +58,7 @@ return {
                 ensure_installed = {
                     "gopls",
                     "helm_ls",
+                    "htmx-lsp",
                     "pyright",
                     "rust_analyzer",
                 },
@@ -131,6 +132,10 @@ return {
                         },
                     },
                 },
+            })
+
+            lspconfig.htmx.setup({
+                filtypes = { "html" },
             })
 
             if not configs.helm_ls then
