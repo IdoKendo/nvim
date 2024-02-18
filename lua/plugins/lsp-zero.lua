@@ -58,7 +58,6 @@ return {
                 ensure_installed = {
                     "gopls",
                     "helm_ls",
-                    "htmx-lsp",
                     "pyright",
                     "rust_analyzer",
                 },
@@ -67,6 +66,7 @@ return {
             require("mason-tool-installer").setup({
                 ensure_installed = {
                     "black",
+                    "htmx-lsp",
                     "prettier",
                     "reorder-python-imports",
                     "stylua",
