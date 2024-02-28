@@ -65,10 +65,10 @@ return {
             })
             require("mason-tool-installer").setup({
                 ensure_installed = {
-                    "black",
                     "htmx-lsp",
                     "prettier",
                     "reorder-python-imports",
+                    "ruff",
                     "stylua",
                 },
                 automatic_installation = true,
