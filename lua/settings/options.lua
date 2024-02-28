@@ -2,6 +2,9 @@
 vim.opt.nu = true
 vim.opt.rnu = true
 
+-- Don't show mode since it's in status line
+vim.opt.showmode = false
+
 -- Set tabs to 4 spaces
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -36,14 +39,18 @@ vim.opt.signcolumn = "yes"
 -- ??
 vim.opt.isfname:append("@-@")
 
--- Reduce updatetime to 200ms
+-- Reduce updatetime to 50ms
 vim.opt.updatetime = 50
 
 -- Place a column line
 vim.opt.colorcolumn = "80"
 
--- ??
+-- Sets whitespace display
 vim.opt.list = true
+
+-- Configure opening splits
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Connect to system clipboard
 vim.opt.clipboard = "unnamedplus"
