@@ -4,7 +4,7 @@ return {
         { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "[P]aste after" },
         { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "[P]aste before" },
         { "<C-n>", "<Plug>(YankyCycleForward)", desc = "Cycle forward paste" },
-        { "<C-m>", "<Plug>(YankyCycleBackward)", desc = "Cycle backward paste" },
+        { "<C-p>", "<Plug>(YankyCycleBackward)", desc = "Cycle backward paste" },
         {
             "<leader>hp",
             function()
