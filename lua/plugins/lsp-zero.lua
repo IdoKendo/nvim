@@ -57,6 +57,7 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "gopls",
+                    "jdtls",
                     "helm_ls",
                     "pyright",
                     "rust_analyzer",
@@ -132,6 +133,10 @@ return {
                         },
                     },
                 },
+            })
+
+            lspconfig.jdtls.setup({
+                filetypes = { "java" },
             })
 
             lspconfig.htmx.setup({
