@@ -1,4 +1,4 @@
-function keymaps(client, bufnr)
+local function keymaps(client, bufnr)
     vim.keymap.set("n", "gd", function()
         vim.lsp.buf.definition()
     end, { buffer = bufnr, remap = false, desc = "[G]oto [D]efinition" })
@@ -53,18 +53,20 @@ return {
             local util = require("lspconfig/util")
             local configs = require("lspconfig.configs")
             local mason_tool_installer = require("mason-tool-installer")
+            local mason_lsp_config = require("mason-lspconfig")
 
-            require("mason-lspconfig").setup({
+            mason_lsp_config.setup({
                 ensure_installed = {
                     "gopls",
-                    "jdtls",
                     "helm_ls",
+                    "jdtls",
+                    "lua_ls",
                     "pyright",
                     "rust_analyzer",
                 },
                 automatic_installation = true,
             })
-            require("mason-tool-installer").setup({
+            mason_tool_installer.setup({
                 ensure_installed = {
                     "htmx-lsp",
                     "prettier",
@@ -130,6 +132,23 @@ return {
                         usePlaceholders = true,
                         analyses = {
                             unusedparams = true,
+                        },
+                    },
+                },
+            })
+
+            lspconfig.lua_ls.setup({
+                filetypes = { "lua" },
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = "LuaJIT",
+                        },
+                        diagnostics = {
+                            globals = { "vim", "require" },
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
                         },
                     },
                 },
