@@ -34,6 +34,7 @@
   "obsidian.nvim": { "branch": "main", "commit": "ebf4cd26f8c69e6ed025d06dfb4144212817878b" },
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
   "plenary.nvim": { "branch": "master", "commit": "8aad4396840be7fc42896e3011751b7609ca4119" },
+  "synonym.nvim": { "branch": "main", "commit": "a209827d18f5ca4d39b9a711882da7bde301b577" },
   "telescope-s3": { "branch": "main", "commit": "96551af413b51dd32c49fbe5f265cbe6db3bab54" },
   "telescope.nvim": { "branch": "master", "commit": "c1a2af0af69e80e14e6b226d3957a064cd080805" },
   "tokyonight.nvim": { "branch": "main", "commit": "610179f7f12db3d08540b6cc61434db2eaecbcff" },
