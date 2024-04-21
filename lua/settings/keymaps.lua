@@ -19,6 +19,10 @@ vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "[D]iagnos
 -- New session script
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/scripts/session.sh<CR>")
 
+-- Rebind Netrw refresh
+vim.keymap.del("n", "<C-l>")
+vim.keymap.set("n", "<leader>ln", "<Plug>NetrwRefresh", { desc = "Re[L]oad [N]etrw" })
+
 -- Stupid fun keymaps
 vim.keymap.set("n", "<leader>en", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>", { desc = "if [E]rr != [N]il" })
 vim.keymap.set(
