@@ -17,7 +17,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next [D]iagnostic"
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "[D]iagnostic [Q]uickfix list" })
 
 -- New session script
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/scripts/session.sh<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !~/.local/scripts/session.sh<CR>")
 
 -- Rebind Netrw refresh
 vim.keymap.del("n", "<C-l>")
