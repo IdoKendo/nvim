@@ -11,6 +11,7 @@ return {
                 javascript = { "prettier" },
                 lua = { "stylua" },
                 python = { "ruff_fix", "ruff_format", "reorder-python-imports" },
+                sql = { "sqlfmt" },
             },
             format_on_save = {
                 lsp_fallback = true,
@@ -18,6 +19,10 @@ return {
                 timeout_ms = 500,
             },
         })
+
+        conform.formatters.sqlfmt = {
+            prepend_args = { "-l", "120" },
+        }
 
         vim.keymap.set({ "n", "v" }, "<leader>mp", function()
             conform.format({

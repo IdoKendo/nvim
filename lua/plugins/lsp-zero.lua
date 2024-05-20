@@ -71,6 +71,7 @@ return {
             "prettier",
             "reorder-python-imports",
             "ruff",
+            "sqlfmt",
             "stylua",
         }
 
