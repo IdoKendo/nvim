@@ -7,33 +7,20 @@ return {
         wk.setup()
         wk.register({
             ["<leader>"] = {
-                c = {
-                    name = "[C]omment",
-                },
-                d = {
-                    name = "[D]iagnostics",
-                },
-                e = {
-                    name = "Troubl[E]",
-                },
-                f = {
-                    name = "[F]ind",
-                },
-                g = {
-                    name = "[G]it",
-                },
-                o = {
-                    name = "[O]bsidian",
-                },
-                r = {
-                    name = "[R]un",
-                },
-                t = {
-                    name = "[T]est",
-                },
-                v = {
-                    name = "[V]iew",
-                },
+                c = { name = "[C]omment" },
+                d = { name = "[D]iagnostics" },
+                e = { name = "Troubl[E]" },
+                f = { name = "[F]ind" },
+                g = { name = "[G]it" },
+                h = { name = "[H]istory" },
+                l = { name = "[L]oad" },
+                m = { name = "[M]ake" },
+                o = { name = "[O]bsidian" },
+                p = { name = "[P]retty" },
+                r = { name = "[R]un" },
+                t = { name = "[T]est" },
+                v = { name = "[V]iew" },
+                z = { name = "[Z]en" },
             },
         })
     end,
