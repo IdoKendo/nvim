@@ -24,5 +24,5 @@ return {
             { "<leader>vt", ":TSPlaygroundToggle<CR>", desc = "[V]iew [T]reesitter" },
         },
     },
-    "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-context", -- sticky function definition
 }
