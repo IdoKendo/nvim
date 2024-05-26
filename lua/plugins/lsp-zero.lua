@@ -63,13 +63,25 @@ return {
                     },
                 },
             },
-            pyright = {},
+            pyright = {
+                settings = {
+                    pyright = {
+                        -- Using Ruff's import organizer
+                        disableOrganizeImports = true,
+                    },
+                    python = {
+                        analysis = {
+                            -- Ignore all files for analysis to exclusively use Ruff for linting
+                            ignore = { "*" },
+                        },
+                    },
+                },
+            },
             rust_analyzer = {},
         }
         local tools = {
             "htmx-lsp",
             "prettier",
-            "reorder-python-imports",
             "ruff",
             "sqlfmt",
             "stylua",
@@ -156,6 +168,15 @@ return {
         lspconfig.gopls.setup(servers.gopls)
         lspconfig.lua_ls.setup(servers.lua_ls)
         lspconfig.jdtls.setup(servers.jdtls)
+        lspconfig.pyright.setup(servers.pyright)
+        lspconfig.ruff.setup({
+            on_attach = function(client, bufnr)
+                if client.name == "ruff" then
+                    -- Disable hover in favor of Pyright
+                    client.server_capabilities.hoverProvider = false
+                end
+            end,
+        })
 
         lspconfig.htmx.setup({
             filtypes = { "html" },

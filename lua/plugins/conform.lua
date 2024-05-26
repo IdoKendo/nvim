@@ -10,7 +10,7 @@ return {
             formatters_by_ft = {
                 javascript = { "prettier" },
                 lua = { "stylua" },
-                python = { "ruff_fix", "ruff_format", "reorder-python-imports" },
+                python = { "ruff_fix", "ruff_format" },
                 sql = { "sqlfmt" },
             },
             formatters = {
