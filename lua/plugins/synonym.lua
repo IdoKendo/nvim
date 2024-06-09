@@ -1,6 +1,9 @@
 return {
     "IdoKendo/synonym.nvim",
-    event = "VeryLazy",
+    event = {
+        "BufReadPre",
+        "BufNewFile",
+    },
     dependencies = {
         "nvim-telescope/telescope.nvim",
     },

@@ -9,7 +9,6 @@ return {
             ["<leader>"] = {
                 c = { name = "[C]omment" },
                 d = { name = "[D]iagnostics" },
-                e = { name = "Troubl[E]" },
                 f = { name = "[F]ind" },
                 g = { name = "[G]it" },
                 h = { name = "[H]istory" },
@@ -20,7 +19,6 @@ return {
                 r = { name = "[R]un" },
                 t = { name = "[T]est" },
                 v = { name = "[V]iew" },
-                z = { name = "[Z]en" },
             },
         })
     end,
