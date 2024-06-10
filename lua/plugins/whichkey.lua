@@ -7,7 +7,6 @@ return {
         wk.setup()
         wk.register({
             ["<leader>"] = {
-                c = { name = "[C]omment" },
                 d = { name = "[D]iagnostics" },
                 f = { name = "[F]ind" },
                 g = { name = "[G]it" },
