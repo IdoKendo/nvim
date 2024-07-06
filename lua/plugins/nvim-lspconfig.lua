@@ -12,10 +12,6 @@ return {
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
             callback = function(event)
-                local map = function(keys, func, desc)
-                    vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-                end
-
                 vim.keymap.set("n", "gd", function()
                     vim.lsp.buf.definition()
                 end, { buffer = event.buf, remap = false, desc = "[G]oto [D]efinition" })
@@ -75,9 +71,9 @@ return {
                 end
 
                 if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-                    map("<leader>vih", function()
+                    vim.keymap.set("n", "<leader>vih", function()
                         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
-                    end, "[V]iew [I]nlay [H]ints")
+                    end, { buffer = event.buf, remap = false, desc = "[V]iew [I]nlay [H]ints" })
                 end
             end,
         })
