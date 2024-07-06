@@ -1,6 +1,10 @@
 return {
     "folke/noice.nvim",
     event = "VeryLazy",
+    keys = {
+        { "<leader>nm", ":Noice<CR>", desc = "[N]oice [M]essages" },
+        { "<leader>nd", ":NoiceDismiss<CR>", desc = "[N]oice [D]ismiss" },
+    },
     config = function()
         require("noice").setup()
         require("notify").setup({
