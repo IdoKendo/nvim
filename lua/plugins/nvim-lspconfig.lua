@@ -94,7 +94,7 @@ return {
                         analyses = {
                             unusedparams = true,
                         },
-                        buildFlags = { "-tags=local" },
+                        buildFlags = { "-tags=cloud" },
                     },
                 },
             },
