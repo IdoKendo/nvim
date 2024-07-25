@@ -65,5 +65,15 @@ return {
                 documentation = cmp.config.window.bordered(),
             },
         })
+
+        for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lua", true)) do
+            loadfile(ft_path)()
+        end
+
+        vim.keymap.set({ "i", "s" }, "<C-n>", function()
+            if luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            end
+        end, { silent = true })
     end,
 }
