@@ -1,5 +1,3 @@
-require("luasnip.session.snippet_collection").clear_snippets("gitcommit")
-
 local luasnip = require("luasnip")
 
 local s = luasnip.snippet
