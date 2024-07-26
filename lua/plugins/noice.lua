@@ -6,7 +6,15 @@ return {
         { "<leader>nd", ":NoiceDismiss<CR>", desc = "[N]oice [D]ismiss" },
     },
     config = function()
-        require("noice").setup()
+        require("noice").setup({
+            lsp = {
+                override = {
+                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                    ["vim.lsp.util.stylize_markdown"] = true,
+                    ["cmp.entry.get_documentation"] = true
+                },
+            },
+        })
         require("notify").setup({
             background_colour = "#000000",
         })
