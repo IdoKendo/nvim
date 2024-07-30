@@ -7,5 +7,6 @@ return {
         { "<leader>gc", "<cmd>Git commit<CR>", desc = "[G]it [C]ommit" },
         { "<leader>gd", vim.cmd.Gvdiff, desc = "[G]it [D]iff" },
         { "<leader>gp", "<cmd>Git push<CR>", desc = "[G]it [P]ush" },
+        { "<leader>gl", "<cmd>Git pull<CR>", desc = "[G]it pul[L]" },
     },
 }
