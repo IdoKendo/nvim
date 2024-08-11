@@ -7,7 +7,7 @@ return {
     },
     config = function()
         require("silicon").setup({
-            font = "FiraCode Nerd Font Mono=34;Noto Emoji=34",
+            -- font = "FiraCode Nerd Font Mono=34;Noto Emoji=34", -- TODO: why did this stop working?
             no_line_number = true,
             theme = "tokyonight_night",
             window_title = function()
