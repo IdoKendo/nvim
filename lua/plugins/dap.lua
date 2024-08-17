@@ -47,7 +47,22 @@ return {
         ft = "python",
         dependencies = "mfussenegger/nvim-dap",
         config = function()
-            require("dap-python").setup("~/.local/share/pyenv/versions/3.11.5/envs/debugpy/bin/python")
+            local dap_python = require("dap-python")
+            dap_python.setup("~/.local/share/pyenv/versions/3.11.5/envs/debugpy/bin/python")
+            dap_python.test_runner = "pytest"
+            table.insert(require("dap").configurations.python, {
+                name = "Debug test",
+                type = "python",
+                request = "launch",
+                module = "pytest",
+                args = {
+                    "${file}",
+                    "-sv",
+                    "--log-cli-level=INFO",
+                    "--log-file=test_out.log",
+                },
+                console = "integratedTerminal",
+            })
         end,
     },
     {
