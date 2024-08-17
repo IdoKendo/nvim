@@ -9,6 +9,7 @@ return {
         conform.setup({
             formatters_by_ft = {
                 javascript = { "prettier" },
+                json = { "jq" },
                 lua = { "stylua" },
                 python = { "ruff_fix", "ruff_format" },
                 sql = { "sqlfmt" },
