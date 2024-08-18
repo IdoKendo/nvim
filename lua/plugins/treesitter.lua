@@ -21,6 +21,8 @@ return {
                             ["if"] = "@function.inner",
                             ["aa"] = "@parameter.outer",
                             ["ia"] = "@parameter.inner",
+                            ["ac"] = "@call.outer",
+                            ["ic"] = "@call.inner",
                         },
                     },
                 },
