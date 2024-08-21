@@ -94,6 +94,7 @@ return {
                         analyses = {
                             unusedparams = true,
                         },
+                        staticcheck = true,
                         buildFlags = { "-tags=cloud" },
                     },
                 },
