@@ -11,7 +11,58 @@ return {
             local dap = require("dap")
             local ui = require("dapui")
 
-            ui.setup()
+            ui.setup({
+                controls = {
+                    element = "repl",
+                    enabled = true,
+                    icons = {
+                        disconnect = "",
+                        pause = "",
+                        play = "",
+                        run_last = "",
+                        step_back = "",
+                        step_into = "",
+                        step_out = "",
+                        step_over = "",
+                        terminate = "",
+                    },
+                },
+                element_mappings = {},
+                expand_lines = true,
+                floating = {
+                    border = "single",
+                    mappings = {
+                        close = { "q", "<Esc>" },
+                    },
+                },
+                force_buffers = true,
+                icons = {
+                    collapsed = "",
+                    current_frame = "",
+                    expanded = "",
+                },
+                layouts = {
+                    {
+                        elements = {
+                            { id = "repl", size = 0.5 },
+                        },
+                        size = 0.3,
+                        position = "bottom",
+                    },
+                },
+                mappings = {
+                    edit = "e",
+                    expand = { "<Tab>" },
+                    open = "o",
+                    remove = "d",
+                    repl = "r",
+                    toggle = "t",
+                },
+                render = {
+                    indent = 2,
+                    max_value_lines = 100,
+                },
+            })
             require("nvim-dap-virtual-text").setup({})
 
             dap.set_log_level("DEBUG")
@@ -25,20 +76,15 @@ return {
             vim.keymap.set("n", "<leader>ro", dap.step_out, { desc = "[R]un Step [O]ut" })
             vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Toggle [B]reakpoint" })
             vim.keymap.set("n", "<leader>rb", dap.run_to_cursor, { desc = "[R]un to cursor and [B]reakpoint" })
-            vim.keymap.set("n", "<leader>rr", dap.repl.toggle, { desc = "[R]un [R]epl" })
+            vim.keymap.set("n", "<leader>re", ui.eval, { desc = "[R]un [E]val" })
             vim.keymap.set("n", "<leader>rk", dap.terminate, { desc = "[R]un [K]ill" })
+            vim.keymap.set("n", "<leader>rT", ui.toggle, { desc = "[R]un [T]oggle UI" })
 
             dap.listeners.before.attach.dapui_config = function()
                 ui.open()
             end
             dap.listeners.before.launch.dapui_config = function()
                 ui.open()
-            end
-            dap.listeners.before.event_terminated.dapui_config = function()
-                ui.close()
-            end
-            dap.listeners.before.event_exited.dapui_config = function()
-                ui.close()
             end
         end,
     },
