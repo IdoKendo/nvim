@@ -44,15 +44,21 @@ return {
                 layouts = {
                     {
                         elements = {
-                            { id = "repl", size = 0.5 },
+                            { id = "scopes", size = 0.5 },
+                            { id = "watches", size = 0.5 },
                         },
-                        size = 0.3,
+                        size = 40,
+                        position = "right",
+                    },
+                    {
+                        elements = { "repl" },
+                        size = 10,
                         position = "bottom",
                     },
                 },
                 mappings = {
                     edit = "e",
-                    expand = { "<Tab>" },
+                    expand = { "<CR>" },
                     open = "o",
                     remove = "d",
                     repl = "r",
@@ -63,7 +69,10 @@ return {
                     max_value_lines = 100,
                 },
             })
-            require("nvim-dap-virtual-text").setup({})
+            require("nvim-dap-virtual-text").setup({
+                virt_lines = false,
+                virt_text_pos = "eol",
+            })
 
             dap.set_log_level("DEBUG")
 
