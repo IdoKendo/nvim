@@ -22,13 +22,19 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-path",
         "saadparwaiz1/cmp_luasnip",
+        "rcarriga/cmp-dap",
     },
     config = function()
         local cmp = require("cmp")
         local luasnip = require("luasnip")
+        local cmp_dap = require("cmp_dap")
         luasnip.config.setup({})
 
         cmp.setup({
+            enabled = function()
+                local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
+                return buftype ~= "prompt" or cmp_dap.is_dap_buffer()
+            end,
             completion = { completeopt = "menu,menuone,noinsert" },
             mapping = cmp.mapping.preset.insert({
                 ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -36,7 +42,7 @@ return {
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                ["<C-Space>"] = cmp.mapping.complete({}),
+                ["<TAB>"] = cmp.mapping.complete({}),
                 ["<C-l>"] = cmp.mapping(function()
                     if luasnip.expand_or_locally_jumpable() then
                         luasnip.expand_or_jump()
@@ -54,8 +60,22 @@ return {
                 end,
             },
             sources = {
-                { name = "buffer", keyword_length = 3 },
+                {
+                    name = "buffer",
+                    keyword_length = 3,
+                    option = {
+                        get_bufnrs = function()
+                            local bufs = {}
+                            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                                bufs[vim.api.nvim_win_get_buf(win)] = true
+                            end
+                            return vim.tbl_keys(bufs)
+                        end,
+                    },
+                },
                 { name = "luasnip", keyword_length = 2 },
+                { name = "dap" },
+                { name = "treesitter" },
                 { name = "nvim_lsp" },
                 { name = "nvim_lua" },
                 { name = "path" },

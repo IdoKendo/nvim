@@ -103,7 +103,7 @@ return {
         dependencies = "mfussenegger/nvim-dap",
         config = function()
             local dap_python = require("dap-python")
-            dap_python.setup("~/.local/share/pyenv/versions/3.11.5/envs/debugpy/bin/python")
+            dap_python.setup("~/personal/debugpy/.venv/bin/python")
             dap_python.test_runner = "pytest"
             table.insert(require("dap").configurations.python, {
                 name = "Debug test",
