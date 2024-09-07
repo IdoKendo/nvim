@@ -12,5 +12,6 @@ return {
     opts = {
         dir = "~/idokendo",
         mappings = {},
+        ui = { enable = false },
     },
 }
