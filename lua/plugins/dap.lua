@@ -126,7 +126,11 @@ return {
         dependencies = "mfussenegger/nvim-dap",
         config = function()
             local dap_go = require("dap-go")
-            dap_go.setup()
+            dap_go.setup({
+                delve = {
+                    build_flags = { "-tags=cloud" },
+                },
+            })
             vim.keymap.set("n", "<leader>rt", dap_go.debug_test, { desc = "[R]un [T]est" })
         end,
     },
