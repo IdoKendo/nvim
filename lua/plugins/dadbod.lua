@@ -31,6 +31,13 @@ return {
         vim.api.nvim_create_autocmd("FileType", {
             pattern = {
                 "sql",
+            },
+            command = "setlocal commentstring=--\\ %s",
+        })
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = {
+                "sql",
                 "mysql",
                 "plsql",
             },
