@@ -118,6 +118,13 @@ return {
                 },
                 console = "integratedTerminal",
             })
+            table.insert(require("dap").configurations.python, {
+                name = "Debug code",
+                type = "python",
+                request = "launch",
+                cwd = vim.fn.getcwd() .. "/src",
+                program = "${file}",
+            })
         end,
     },
     {
