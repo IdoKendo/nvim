@@ -16,6 +16,15 @@ return {
                     cloak_pattern = "=.+",
                     replace = nil,
                 },
+                {
+                    file_pattern = {
+                        "*.hurl",
+                    },
+                    cloak_pattern = {
+                        "(Authorization: Bearer).+",
+                    },
+                    replace = nil,
+                },
             },
         })
         vim.keymap.set("n", "<leader>ct", "<cmd>CloakToggle<CR>", { desc = "[C]loak [T]oggle" })
