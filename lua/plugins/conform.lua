@@ -13,6 +13,7 @@ return {
                 lua = { "stylua" },
                 python = { "ruff_fix", "ruff_format" },
                 sql = { "sqlfmt" },
+                yaml = { "yq" },
             },
             formatters = {
                 sqlfmt = {
