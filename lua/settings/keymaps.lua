@@ -2,9 +2,6 @@
 vim.keymap.set("n", "}", "}zz", { desc = "Next empty line" })
 vim.keymap.set("n", "{", "{zz", { desc = "Previous empty line" })
 
--- File navigation
-vim.keymap.set("n", "<leader>fv", vim.cmd.Ex, { desc = "[F]ile [V]iewer" })
-
 -- Buffer manipulation
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]aste and keep clipboard" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -18,7 +15,3 @@ vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "[D]iagnos
 
 -- New session script
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/scripts/session.sh<CR>")
-
--- Rebind Netrw refresh
-vim.keymap.del("n", "<C-l>")
-vim.keymap.set("n", "<leader>ln", "<Plug>NetrwRefresh", { desc = "Re[L]oad [N]etrw" })
