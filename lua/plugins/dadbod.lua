@@ -45,5 +45,7 @@ return {
                 vim.schedule(db_completion)
             end,
         })
+
+        vim.keymap.set("v", "<leader>rq", "<Plug>(DBUI_ExecuteQuery)", { desc = "[R]un [Q]uery" })
     end,
 }
