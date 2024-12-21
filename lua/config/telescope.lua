@@ -62,7 +62,12 @@ vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" }
 vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
-vim.keymap.set("v", "<leader>fs", builtin.grep_string, { noremap = true, silent = true, desc = "[F]ind [S]tring" })
+vim.keymap.set(
+    { "v", "n" },
+    "<leader>fw",
+    builtin.grep_string,
+    { noremap = true, silent = true, desc = "[F]ind [W]ord" }
+)
 vim.keymap.set("n", "<leader>fn", "<cmd>cnext<CR>", { noremap = true, silent = true, desc = "[F]ind [N]ext" })
 vim.keymap.set("n", "<leader>fp", "<cmd>cprev<CR>", { noremap = true, silent = true, desc = "[F]ind [P]revious" })
 vim.keymap.set("n", "<leader>tq", function()
