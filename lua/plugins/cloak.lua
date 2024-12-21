@@ -27,6 +27,6 @@ return {
                 },
             },
         })
-        vim.keymap.set("n", "<leader>ct", "<cmd>CloakToggle<CR>", { desc = "[C]loak [T]oggle" })
+        vim.keymap.set("n", "<leader>tc", "<cmd>CloakToggle<CR>", { desc = "[T]oggle [C]loak" })
     end,
 }

@@ -2,7 +2,13 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     keys = {
-        { "<leader>?", function() require("which-key").show({global = false }) end, desc = "Which Key[?]" },
+        {
+            "<leader>?",
+            function()
+                require("which-key").show({ global = false })
+            end,
+            desc = "Which Key[?]",
+        },
     },
     config = function()
         vim.o.timeout = true
@@ -20,7 +26,7 @@ return {
             { "<leader>o", group = "[O]bsidian" },
             { "<leader>p", group = "[P]retty" },
             { "<leader>r", group = "[R]un" },
-            { "<leader>t", group = "[T]est" },
+            { "<leader>t", group = "[T]oggle" },
             { "<leader>v", group = "[V]iew" },
         })
     end,
