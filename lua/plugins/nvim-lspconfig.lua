@@ -83,6 +83,10 @@ return {
         local util = require("lspconfig/util")
 
         local servers = {
+            bashls = {
+                cmd = { "bash-language-server", "start" },
+                filetypes = { "sh" },
+            },
             gopls = {
                 cmd = { "gopls" },
                 filetypes = { "go", "gomod", "gowork", "gotmpl" },
