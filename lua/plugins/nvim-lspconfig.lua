@@ -87,6 +87,9 @@ return {
                 cmd = { "bash-language-server", "start" },
                 filetypes = { "sh" },
             },
+            clangd = {
+                cmd = { "clangd", "--offset-encoding=utf-16" },
+            },
             gopls = {
                 cmd = { "gopls" },
                 filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -143,11 +146,13 @@ return {
         require("mason").setup()
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
+            "clang-format",
             "htmx-lsp",
             "prettier",
             "ruff",
             "sqlfmt",
             "stylua",
+            "yq",
         })
         require("mason-tool-installer").setup({
             ensure_installed = ensure_installed,

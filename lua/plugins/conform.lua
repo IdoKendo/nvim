@@ -8,6 +8,8 @@ return {
         local conform = require("conform")
         conform.setup({
             formatters_by_ft = {
+                c = { "clang_format" },
+                cpp = { "clang_format" },
                 javascript = { "prettier" },
                 json = { "jq" },
                 lua = { "stylua" },
@@ -16,6 +18,11 @@ return {
                 yaml = { "yq" },
             },
             formatters = {
+                clang_format = {
+                    command = "clang-format",
+                    args = { "--style=file" },
+                    stdin = true,
+                },
                 sqlfmt = {
                     prepend_args = { "-l", "120" },
                 },
