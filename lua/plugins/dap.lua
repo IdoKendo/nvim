@@ -53,6 +53,8 @@ return {
                 },
             })
             vim.keymap.set("n", "<leader>rt", dap_go.debug_test, { desc = "[R]un [T]est" })
+
+            require("config.dap-ginkgo")
         end,
     },
 }
