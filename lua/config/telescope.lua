@@ -61,7 +61,9 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind existing [B]
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" })
 vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
-vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
+vim.keymap.set("n", "<leader>fd", function()
+    builtin.diagnostics({ root_dir = vim.fn.getcwd() })
+end, { desc = "[F]ind [D]iagnostics" })
 vim.keymap.set(
     { "v", "n" },
     "<leader>fw",
