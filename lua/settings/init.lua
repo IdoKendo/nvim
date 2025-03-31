@@ -1,4 +1,5 @@
 require("settings.options")
+require("settings.lsp")
 require("settings.case_conversion")
 require("settings.parse_jwt")
 require("settings.keymaps")

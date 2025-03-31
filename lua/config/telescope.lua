@@ -8,6 +8,12 @@ vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" 
 vim.keymap.set("n", "<leader>fg", function()
     builtin.git_files({ recurse_submodules = true })
 end, { desc = "[F]ind [G]it files" })
+vim.keymap.set(
+    "n",
+    "grr",
+    builtin.lsp_references,
+    { desc = 'require("telescope.builtin").lsp_references()', noremap = true, silent = true }
+)
 vim.keymap.set("n", "<leader>fs", function()
     local opts = {}
     opts.cwd = opts.cwd or vim.uv.cwd()
