@@ -1,7 +1,8 @@
 return {
+    cmd = { "lua-language-server" },
     filetypes = { "lua" },
     settings = {
-        lua = {
+        Lua = {
             runtime = {
                 version = "luajit",
             },
