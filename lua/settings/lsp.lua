@@ -10,6 +10,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+vim.api.nvim_create_user_command("LspInfo", function()
+    vim.cmd("checkhealth vim.lsp")
+end, {})
+
 local function get_filenames_without_suffix(dir)
     local files = {}
     local handle = vim.loop.fs_scandir(dir)
