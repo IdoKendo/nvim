@@ -27,7 +27,7 @@ return {
             { "<leader>p", group = "[P]retty" },
             { "<leader>r", group = "[R]un" },
             { "<leader>t", group = "[T]oggle" },
-            { "<leader>v", group = "[V]iew" },
+            { "<leader>w", group = "[W]alk" },
         })
     end,
 }
