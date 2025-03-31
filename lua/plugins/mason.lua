@@ -21,6 +21,7 @@ return {
             "rust_analyzer",
             "sqlfmt",
             "stylua",
+            "terraform-ls",
             "typos_lsp",
             "yq",
         }
