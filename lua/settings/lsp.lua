@@ -16,10 +16,11 @@ end, {})
 
 local function get_filenames_without_suffix(dir)
     local files = {}
-    local handle = vim.loop.fs_scandir(dir)
+    local uv = vim.uv
+    local handle = uv.fs_scandir(dir)
     if handle then
         while true do
-            local name = vim.loop.fs_scandir_next(handle)
+            local name = uv.fs_scandir_next(handle)
             if not name then
                 break
             end
@@ -33,6 +34,10 @@ end
 local filenames = get_filenames_without_suffix(vim.fn.stdpath("config") .. "/lsp")
 vim.lsp.enable(filenames)
 
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "vim.lsp.buf.definition()" })
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "vim.lsp.buf.declaration()" })
 vim.diagnostic.config({ virtual_text = true })
+vim.keymap.set("n", "<leader>td", function()
+    vim.diagnostic.config({
+        virtual_lines = not vim.diagnostic.config().virtual_lines,
+        virtual_text = not vim.diagnostic.config().virtual_text,
+    })
+end, { desc = "[T]oggle [D]iagnostic lines" })
