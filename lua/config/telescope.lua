@@ -14,6 +14,18 @@ vim.keymap.set(
     builtin.lsp_references,
     { desc = 'require("telescope.builtin").lsp_references()', noremap = true, silent = true }
 )
+vim.keymap.set(
+    "n",
+    "gd",
+    builtin.lsp_definitions,
+    { desc = 'require("telescope.builtin").lsp_definitions()', noremap = true, silent = true }
+)
+vim.keymap.set(
+    "n",
+    "gi",
+    builtin.lsp_implementations,
+    { desc = 'require("telescope.builtin").lsp_implementations()', noremap = true, silent = true }
+)
 vim.keymap.set("n", "<leader>fs", function()
     local opts = {}
     opts.cwd = opts.cwd or vim.uv.cwd()
