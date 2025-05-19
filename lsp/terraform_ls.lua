@@ -1,4 +1,4 @@
 return {
     cmd = { "terraform-ls", "serve" },
-    filetypes = { "terraform" },
+    filetypes = { "terraform", "tf" },
 }
