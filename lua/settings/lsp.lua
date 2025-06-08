@@ -44,3 +44,11 @@ vim.keymap.set("n", "<leader>td", function()
         virtual_text = not vim.diagnostic.config().virtual_text,
     })
 end, { desc = "[T]oggle [D]iagnostic lines" })
+
+-- Recognize filetypes for promql lsp
+vim.filetype.add({
+    extension = {
+        promql = "promql",
+        prom = "promql",
+    },
+})
