@@ -37,8 +37,20 @@ return {
     {
         "nvim-treesitter/playground",
         keys = {
-            { "<leader>vt", ":TSPlaygroundToggle<CR>", desc = "[V]iew [T]reesitter" },
+            { "<leader>ttp", ":TSPlaygroundToggle<CR>", desc = "[T]oggle [T]reesitter [P]layground" },
         },
     },
-    "nvim-treesitter/nvim-treesitter-context", -- sticky function definition
+    {
+        "nvim-treesitter/nvim-treesitter-context", -- sticky function definition
+        event = {
+            "BufReadPre",
+            "BufNewFile",
+        },
+        keys = {
+            { "<leader>ttc", ":TSContext toggle<CR>", desc = "[T]oggle [T]reesitter [C]ontext" },
+        },
+        config = function()
+            vim.cmd(":TSContext enable")
+        end,
+    },
 }
