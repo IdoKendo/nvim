@@ -27,11 +27,16 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+-- Case insensitive search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- Set terminal GUI colors
 vim.opt.termguicolors = true
 
--- Always keep 8 lines below/above cursor
+-- Always keep 8 lines below/above/side cursor
 vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
 
 -- Enable a sign column on cursor
 vim.opt.signcolumn = "yes"
