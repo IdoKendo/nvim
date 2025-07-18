@@ -50,5 +50,6 @@ vim.filetype.add({
     extension = {
         promql = "promql",
         prom = "promql",
+        p8 = "pico8",
     },
 })
