@@ -4,6 +4,7 @@ local typo_fixes = {
     retrun = "return",
     improt = "import",
     pakcage = "package",
+    clsuter = "cluster",
 }
 
 for typo, correct in pairs(typo_fixes) do
