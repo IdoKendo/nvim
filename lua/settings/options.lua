@@ -57,8 +57,11 @@ vim.opt.list = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Connect to system clipboard
-vim.opt.clipboard = "unnamedplus"
+-- Sync with system clipboard,
+-- scheduled to reduce startup-time.
+vim.schedule(function()
+    vim.o.clipboard = "unnamedplus"
+end)
 
 -- Display markdown nicely
 vim.opt.conceallevel = 1
