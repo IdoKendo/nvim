@@ -7,6 +7,7 @@ return {
             usePlaceholders = true,
             analyses = {
                 unusedparams = true,
+                ST1000 = false,
             },
             staticcheck = true,
             buildFlags = { "-tags=cloud" },
