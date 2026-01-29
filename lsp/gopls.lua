@@ -8,6 +8,7 @@ return {
             analyses = {
                 unusedparams = true,
                 ST1000 = false,
+                ST1003 = false,
             },
             staticcheck = true,
             buildFlags = { "-tags=cloud" },
