@@ -26,7 +26,9 @@ return {
 
         local function restart_lsp_clients()
             local clients = vim.lsp.get_clients({ bufnr = 0 })
-            vim.lsp.stop_client(clients)
+            for _, client in ipairs(clients) do
+                client:stop()
+            end
             vim.cmd.update()
             vim.defer_fn(vim.cmd.edit, 1000)
         end

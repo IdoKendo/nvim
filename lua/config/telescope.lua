@@ -49,7 +49,7 @@ vim.keymap.set("n", "<leader>fs", function()
             end
 
             ---@diagnostic disable-next-line: deprecated
-            return vim.tbl_flatten({
+            return vim.iter({
                 args,
                 {
                     "--color=never",
@@ -60,6 +60,8 @@ vim.keymap.set("n", "<leader>fs", function()
                     "--smart-case",
                 },
             })
+                :flatten()
+                :totable()
         end,
         entry_maker = make_entry.gen_from_vimgrep(opts),
         cwd = opts.cwd,

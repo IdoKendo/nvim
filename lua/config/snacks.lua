@@ -10,9 +10,8 @@ local function system(cmd, err)
 end
 
 local function yank_url()
-    local uv = vim.uv or vim.loop
     local file = vim.api.nvim_buf_get_name(0) ---@type string?
-    file = file and (uv.fs_stat(file) or {}).type == "file" and svim.fs.normalize(file) or nil
+    file = file and (vim.uv.fs_stat(file) or {}).type == "file" and vim.fs.normalize(file) or nil
     local cwd = file and vim.fn.fnamemodify(file, ":h") or vim.fn.getcwd()
 
     local branch = system({ "git", "-C", cwd, "rev-parse", "--abbrev-ref", "HEAD" }, "Failed to get current branch")[1]

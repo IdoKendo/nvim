@@ -1,7 +1,5 @@
-local ts_utils = require("nvim-treesitter.ts_utils")
-
 local function get_test_description()
-    local node = ts_utils.get_node_at_cursor()
+    local node = vim.treesitter.get_node()
     while node do
         if node:type() == "call_expression" then
             local first_child = node:child(0)

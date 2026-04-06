@@ -27,4 +27,4 @@ vim.api.nvim_create_user_command("DecodeJWT", function(args)
     DecodeJWT(args.line1, args.line2)
 end, { range = true, bang = true })
 
-vim.api.nvim_set_keymap("v", "<leader>j", ":DecodeJWT<CR>", { desc = "Decode [J]WT Token" })
+vim.keymap.set("v", "<leader>j", ":DecodeJWT<CR>", { desc = "Decode [J]WT Token" })
