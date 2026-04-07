@@ -7,6 +7,12 @@ return {
         "setup.cfg",
         "requirements.txt",
         "Pipfile",
-        ".git",
+    },
+    capabilities = {
+        workspace = {
+            didChangeWatchedFiles = {
+                dynamicRegistration = false,
+            },
+        },
     },
 }

@@ -1,0 +1,8 @@
+require("config.options")
+require("config.lsp")
+require("config.case_conversion")
+require("config.parse_jwt")
+require("config.keymaps")
+require("config.abbreviations")
+require("config.yank")
+require("config.undotree")
