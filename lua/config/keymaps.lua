@@ -41,3 +41,10 @@ vim.keymap.set("n", "<leader>ttp", ":InspectTree<CR>", { desc = "[T]oggle [T]ree
 
 -- New session script
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/scripts/session.sh<CR>")
+
+-- Restart neovim in place
+vim.keymap.set("n", "<leader>R", function()
+    local session = vim.fn.fnameescape(vim.fn.stdpath("state") .. "/restart_session.vim")
+    vim.cmd("mksession! " .. session)
+    vim.cmd("restart source " .. session)
+end, { desc = "[R]estart Neovim" })
