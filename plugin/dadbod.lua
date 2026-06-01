@@ -63,6 +63,8 @@ local table_helpers = type(vim.g.db_ui_table_helpers) == "table" and vim.g.db_ui
 table_helpers.databricks = table_helpers.databricks or table_helpers.Databricks or {
     List = "SELECT * FROM {table} LIMIT 200",
     Columns = "DESCRIBE TABLE {table}",
+    Count = "SELECT COUNT(*) AS row_count FROM {table}",
+    Details = "DESCRIBE DETAIL {table}",
 }
 vim.g.db_ui_table_helpers = table_helpers
 
