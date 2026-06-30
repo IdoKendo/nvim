@@ -8,6 +8,130 @@ local config = require("telescope.config")
 local finders = require("telescope.finders")
 local make_entry = require("telescope.make_entry")
 local pickers = require("telescope.pickers")
+local previewers = require("telescope.previewers")
+
+local function git_output(args)
+    local output = vim.fn.systemlist(args)
+    if vim.v.shell_error ~= 0 then
+        return nil
+    end
+
+    return output
+end
+
+local function git_first_line(args)
+    local output = git_output(args)
+    if not output or output[1] == "" then
+        return nil
+    end
+
+    return output[1]
+end
+
+local function git_root()
+    return git_first_line({ "git", "rev-parse", "--show-toplevel" })
+end
+
+local function git_current_branch(root)
+    return git_first_line({ "git", "-C", root, "branch", "--show-current" })
+end
+
+local function git_ref_exists(root, ref)
+    return git_output({ "git", "-C", root, "show-ref", "--verify", "--quiet", ref }) ~= nil
+end
+
+local function local_default_ref(root, remote, branch)
+    if git_ref_exists(root, "refs/heads/" .. branch) then
+        return branch
+    end
+
+    return remote .. "/" .. branch
+end
+
+local function git_default_branch(root)
+    local remotes = git_output({ "git", "-C", root, "remote" })
+    if not remotes then
+        return nil
+    end
+
+    local remote_order = vim.deepcopy(remotes)
+    if vim.tbl_contains(remote_order, "origin") then
+        remote_order = vim.tbl_filter(function(remote)
+            return remote ~= "origin"
+        end, remote_order)
+        table.insert(remote_order, 1, "origin")
+    end
+
+    for _, remote in ipairs(remote_order) do
+        local ref =
+            git_first_line({ "git", "-C", root, "symbolic-ref", "--short", "refs/remotes/" .. remote .. "/HEAD" })
+        if ref then
+            return local_default_ref(root, remote, ref:sub(#remote + 2))
+        end
+
+        local remote_info = git_output({ "git", "-C", root, "remote", "show", "-n", remote })
+        if remote_info then
+            for _, line in ipairs(remote_info) do
+                local branch = line:match("HEAD branch: (.+)$")
+                if branch and branch ~= "(unknown)" then
+                    return local_default_ref(root, remote, branch)
+                end
+            end
+        end
+    end
+end
+
+local function git_diff_default_branch()
+    local root = git_root()
+    if not root then
+        vim.notify("Not in a git repository", vim.log.levels.ERROR)
+        return
+    end
+
+    local default_branch = git_default_branch(root)
+    if not default_branch then
+        vim.notify("Could not resolve git default branch", vim.log.levels.ERROR)
+        return
+    end
+
+    local opts = { cwd = root }
+    local current_branch = git_current_branch(root)
+    local on_default_branch = current_branch == default_branch
+    local range = on_default_branch and "HEAD" or "HEAD.." .. default_branch
+    local prompt_title = on_default_branch and "Git Diff Local Changes" or "Git Diff " .. range
+
+    pickers
+        .new(opts, {
+            prompt_title = prompt_title,
+            finder = finders.new_oneshot_job({ "git", "-C", root, "diff", "--name-only", range, "--" }, {
+                entry_maker = function(file)
+                    return {
+                        value = file,
+                        display = file,
+                        ordinal = file,
+                        path = root .. "/" .. file,
+                        filename = root .. "/" .. file,
+                    }
+                end,
+            }),
+            previewer = previewers.new_buffer_previewer({
+                title = "Git File Diff",
+                define_preview = function(self, entry)
+                    local diff = git_output({ "git", "-C", root, "--no-pager", "diff", range, "--", entry.value })
+                    if not diff then
+                        diff = { "Could not load diff for " .. entry.value }
+                    elseif vim.tbl_isempty(diff) then
+                        diff = { "No diff for " .. entry.value }
+                    end
+
+                    vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, diff)
+                    vim.bo[self.state.bufnr].filetype = "diff"
+                end,
+            }),
+            sorter = config.values.file_sorter(opts),
+        })
+        :find()
+end
 
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" })
 vim.keymap.set("n", "<leader>fg", function()
@@ -86,6 +210,7 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind existing [B]
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[F]ind [K]eymaps" })
 vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
+vim.keymap.set("n", "<leader>fm", git_diff_default_branch, { desc = "[F]ind diff with [M]ain branch" })
 vim.keymap.set("n", "<leader>fd", function()
     builtin.diagnostics({ root_dir = vim.fn.getcwd() })
 end, { desc = "[F]ind [D]iagnostics" })
