@@ -37,7 +37,7 @@ This repository is my Neovim 0.12+ config.
 - **Treesitter parser installation:** [tree-sitter-cli](https://tree-sitter.github.io/tree-sitter/creating-parsers/1-getting-started.html).
 - **Telescope search workflow:** [ripgrep (rg)](https://github.com/BurntSushi/ripgrep).
 - **Markdown preview:** Node.js/npm for `markdown-preview.nvim` install step.
-- **Python debugging:** a working `debugpy` virtualenv python path.
+- **Python debugging:** `debugpy-adapter` executable.
 - **Code snapshots:** [silicon](https://github.com/Aloxaf/silicon) binary for `:Silicon`.
 
 ## 4) Installation

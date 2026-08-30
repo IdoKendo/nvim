@@ -217,7 +217,7 @@ vim.api.nvim_create_autocmd("FileType", {
         local dap_python = require("dap-python")
         local dap = require("dap")
 
-        dap_python.setup("~/personal/debugpy/.venv/bin/python")
+        dap_python.setup("debugpy-adapter")
         dap_python.test_runner = "pytest"
 
         dap.configurations.python = dap.configurations.python or {}
