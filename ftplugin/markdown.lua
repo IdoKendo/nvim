@@ -42,6 +42,22 @@ end
 if not vim.g.markdown_ftplugin_initialized then
     vim.g.markdown_ftplugin_initialized = true
 
+    local group = vim.api.nvim_create_augroup("markdown_ftplugin", { clear = false })
+    vim.api.nvim_create_autocmd("PackChanged", {
+        group = group,
+        callback = function(event)
+            if
+                event.data.spec.name ~= "markdown-preview.nvim"
+                or (event.data.kind ~= "install" and event.data.kind ~= "update")
+            then
+                return
+            end
+
+            vim.cmd.packadd("markdown-preview.nvim")
+            vim.fn["mkdp#util#install"]()
+        end,
+    })
+
     vim.pack.add({
         "https://github.com/MeanderingProgrammer/render-markdown.nvim",
         "https://github.com/epwalsh/obsidian.nvim",
@@ -57,30 +73,6 @@ if not vim.g.markdown_ftplugin_initialized then
             latex = { enabled = false },
         })
     end
-
-    local group = vim.api.nvim_create_augroup("markdown_ftplugin", { clear = false })
-    vim.api.nvim_create_autocmd("PackChanged", {
-        group = group,
-        callback = function(event)
-            local plugin_name = event.match
-            local event_data = event.data or {}
-            local spec = event_data.spec or {}
-            local spec_source = spec.src or spec.url or ""
-
-            if
-                plugin_name ~= "markdown-preview.nvim"
-                and spec.name ~= "markdown-preview.nvim"
-                and not spec_source:find("markdown%-preview%.nvim")
-            then
-                return
-            end
-
-            local ok_packadd = pcall(vim.api.nvim_cmd, { cmd = "packadd", args = { "markdown-preview.nvim" } }, {})
-            if ok_packadd then
-                pcall(vim.fn["mkdp#util#install"])
-            end
-        end,
-    })
 
     vim.keymap.set("n", "<leader>on", function()
         if not is_vault_markdown_buffer(0) or not ensure_obsidian_setup() then
