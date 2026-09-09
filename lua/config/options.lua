@@ -20,7 +20,7 @@ vim.opt.wrap = false
 -- Setup for persistent undo history
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv("XDG_CACHE_HOME") .. "/nvim/undodir"
 vim.opt.undofile = true
 
 -- Incremental searching
