@@ -42,7 +42,8 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-local ensure_installed = { "bash", "c", "lua", "markdown", "markdown_inline", "query", "regex", "vim", "vimdoc" }
+local ensure_installed =
+    { "bash", "c", "lua", "markdown", "markdown_inline", "query", "regex", "rust", "vim", "vimdoc" }
 local already_installed = require("nvim-treesitter.config").get_installed()
 local parsers_to_install = vim.iter(ensure_installed)
     :filter(function(parser)
