@@ -45,11 +45,11 @@ vim.keymap.set("n", "<leader>td", function()
     })
 end, { desc = "[T]oggle [D]iagnostic lines" })
 
--- Recognize filetypes for promql lsp
 vim.filetype.add({
     extension = {
         promql = "promql",
         prom = "promql",
         p8 = "pico8",
+        tf = "terraform",
     },
 })

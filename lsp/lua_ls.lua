@@ -4,10 +4,10 @@ return {
     settings = {
         Lua = {
             runtime = {
-                version = "luajit",
+                version = "LuaJIT",
             },
             completion = {
-                callsnippet = "replace",
+                callSnippet = "Replace",
             },
             diagnostics = {
                 globals = { "vim", "require" },
